@@ -1,17 +1,15 @@
 import PwaInstallPromptWrapper from '@/components/pwa/PwaInstallPromptWrapper';
-import { CardWithForm } from '@/components/shared/card';
+import Portfolio from '@/components/Portfolio';
 
 export default function Home() {
   const showPromptes: boolean = false;
   return (
-    <div>
+    <main>
       {/* PWA Install Prompt */}
       {showPromptes && (
         <PwaInstallPromptWrapper appName="PWA App" appIcon="/icons/apple-touch-icon.png" />
       )}
-      <div className="p-4">
-        <CardWithForm />
-      </div>
-    </div>
+      <Portfolio />
+    </main>
   );
 }

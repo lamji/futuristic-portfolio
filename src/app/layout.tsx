@@ -14,15 +14,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'ScaleWeb',
+  title: 'Jick Lampago',
   description: 'A Progressive Web App example with Next.js',
   manifest: '/icons/site.webmanifest',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black',
-    title: 'ScaleWeb',
+    title: 'Jick Lampago',
   },
-  applicationName: 'ScaleWeb',
+  applicationName: 'Jick Lampago',
   formatDetection: {
     telephone: false,
   },
@@ -54,17 +54,17 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         {/* Open Graph Meta Tags for Social Sharing */}
-        <meta property="og:title" content="ScaleWeb - Premier Web and Mobile Design Services" />
+        <meta property="og:title" content="Jick Lampago - Premier Web and Mobile Design Services" />
         <meta
           property="og:description"
           content="Transform your online presence with stunning, high-performance websites and mobile apps. Professional web design, development, and digital solutions for businesses of all sizes."
         />
-        <meta property="og:image" content="https://i-solar.vercel.app/hero/preview.png" />
-        <meta property="og:url" content="https://i-solar.vercel.app/" />
+        <meta property="og:image" content="/preview/preview.png" />
+        <meta property="og:url" content="https://jicklampago.vercel.app/" />
         <meta property="og:type" content="website" />
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://i-solar.vercel.app/hero/preview.png" />
+        <meta name="twitter:image" content="/preview/preview.png" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Providers>{children}</Providers>
