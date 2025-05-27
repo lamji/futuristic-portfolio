@@ -435,11 +435,11 @@ export default function Portfolio() {
               transition={{ delay: 0.4 }}
             >
               <Button 
-                className="hidden sm:block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white py-6 px-8 text-base font-medium transition-all duration-300"
+                className="hidden sm:flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white py-6 px-8 text-base font-medium transition-all duration-300"
                 onClick={() => generatePdf()}
               >
-                Download Resume
-                <Download className="ml-2 h-5 w-5" />
+                <span>Download Resume</span>
+                <Download className="ml-2 h-5 w-5 flex-shrink-0" />
               </Button>
               <Button 
                 variant="outline" 
