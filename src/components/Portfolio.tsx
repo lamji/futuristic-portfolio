@@ -15,7 +15,6 @@ import {
   GitBranch,
   Smartphone as Mobile,
   ExternalLink,
-  Github,
   Download,
   MessageCircle,
 } from "lucide-react";
@@ -193,7 +192,7 @@ const ProjectCard = ({ title, description, image, tags, links, tech, featured }:
             <span className="text-sm font-medium text-blue-300 uppercase tracking-wider">{tags[0] || 'Project'}</span>
           </div>
           <div className="flex items-center gap-3">
-            {links.github && (
+            {/* {links.github && (
               <motion.a
                 href={links.github}
                 target="_blank"
@@ -203,7 +202,7 @@ const ProjectCard = ({ title, description, image, tags, links, tech, featured }:
               >
                 <Github className="h-5 w-5" />
               </motion.a>
-            )}
+            )} */}
             {links.demo && (
               <motion.a
                 href={links.demo}
@@ -771,11 +770,11 @@ export default function Portfolio() {
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <ProjectCard
-              title="AI Task Manager"
-              description="An intelligent task management system that uses AI to optimize your workflow and boost productivity."
-              image="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
-              tags={["Featured", "AI", "Full Stack"]}
-              tech={["React", "Node.js", "OpenAI", "MongoDB"]}
+              title="ScaleWeb"
+              description="A modern website company platform that showcases a collection of AI-powered web templates and design solutions, featuring a sleek template gallery and responsive design."
+              image="https://res.cloudinary.com/dlax3esau/image/upload/v1748313695/Screenshot_1_k3ozfl.png"
+              tags={["Featured", "Web", "Full Stack"]}
+              tech={["React", "Node.js", "Next.js", "Tailwind CSS", "shadcn/ui"]}
               links={{
                 demo: "https://scale-web-company.vercel.app",
                 github: "https://github.com/username/task-manager"
@@ -783,35 +782,35 @@ export default function Portfolio() {
               featured
             />
             <ProjectCard
-              title="Fitness Tracker"
-              description="A cross-platform fitness application that helps users track workouts and achieve their fitness goals."
-              image="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop"
-              tags={["Mobile", "React Native"]}
-              tech={["React Native", "Expo", "Firebase"]}
+              title="iSolar"
+              description="A modern installer application that simplifies software installation with a clean, user-friendly interface and advanced package management features."
+              image="https://res.cloudinary.com/dlax3esau/image/upload/v1747894145/i-solar.vercel.app__tmcydn.png"
+              tags={["Featured", "Web", "Full Stack"]}
+              tech={["React", "Node.js", "Next.js", "Tailwind CSS", "shadcn/ui"]}
               links={{
-                demo: "https://fitness-app-demo.com",
+                demo: "https://res.cloudinary.com/dlax3esau/image/upload/v1747894145/i-solar.vercel.app__tmcydn.png",
                 github: "https://github.com/username/fitness-app"
               }}
             />
             <ProjectCard
-              title="E-commerce Platform"
-              description="A modern shopping platform with real-time inventory and advanced search capabilities."
-              image="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2070&auto=format&fit=crop"
-              tags={["Web", "Full Stack"]}
-              tech={["Next.js", "TypeScript", "Prisma"]}
+              title="Capture Studio"
+              description="A modern photography platform that showcases stunning visual stories with a seamless user experience and advanced image management features."
+              image="https://res.cloudinary.com/dlax3esau/image/upload/v1748314371/Screenshot_3_hs3kah.png"
+              tags={["Featured", "Web", "Full Stack"]}
+              tech={["Next.js", "TypeScript", "shadcn/ui", "Tailwind CSS"]}
               links={{
-                demo: "https://ecommerce-demo.com",
+                demo: "https://swt-004-photography.vercel.app/",
                 github: "https://github.com/username/ecommerce"
               }}
             />
             <ProjectCard
               title="Portfolio Website"
               description="A modern portfolio website showcasing creative work with smooth animations and interactions."
-              image="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop"
+              image="https://res.cloudinary.com/dlax3esau/image/upload/v1748314474/Screenshot_4_i0au0a.png"
               tags={["Web", "Design"]}
               tech={["Next.js", "Tailwind CSS", "Framer Motion"]}
               links={{
-                demo: "https://portfolio-demo.com",
+                demo: "https://swt-002-company-brand.vercel.app/",
                 github: "https://github.com/username/portfolio"
               }}
             />
