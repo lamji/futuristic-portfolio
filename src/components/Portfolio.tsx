@@ -436,7 +436,7 @@ export default function Portfolio() {
               transition={{ delay: 0.4 }}
             >
               <Button 
-                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white py-6 px-8 text-base font-medium transition-all duration-300"
+                className="hidden sm:block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white py-6 px-8 text-base font-medium transition-all duration-300"
                 onClick={() => generatePdf()}
               >
                 Download Resume
@@ -445,7 +445,12 @@ export default function Portfolio() {
               <Button 
                 variant="outline" 
                 className="bg-transparent border-gray-600 text-white hover:bg-gray-800 hover:text-white py-6 px-8 text-base font-medium transition-all duration-300"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => {
+                  const footer = document.querySelector('footer');
+                  if (footer) {
+                    footer.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
               >
                 Contact Me
                 <MessageCircle className="ml-2 h-5 w-5" />
@@ -772,7 +777,7 @@ export default function Portfolio() {
               tags={["Featured", "AI", "Full Stack"]}
               tech={["React", "Node.js", "OpenAI", "MongoDB"]}
               links={{
-                demo: "https://task-manager-demo.com",
+                demo: "https://scale-web-company.vercel.app",
                 github: "https://github.com/username/task-manager"
               }}
               featured
