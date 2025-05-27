@@ -220,7 +220,7 @@ export const generatePdf = async () => {
                 <span class="job-title">Mid Frontend Developer</span>
                 <span class="period">2022 - Present</span>
               </div>
-              <div class="company">Caommerce Acceptance Solution. Inc</div>
+              <div class="company">Commerce Acceptance Solution. Inc</div>
               <div class="job-description">
                 • Collaborate with the development team to implement new features, optimize performance, 
                   and maintain high-quality code for enterprise applications.<br>

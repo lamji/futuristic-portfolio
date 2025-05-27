@@ -273,7 +273,7 @@ const ProjectCard = ({ title, description, image, tags, links, tech, featured }:
 
 export default function Portfolio() {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-black via-gray-900 to-blue-950 cursor-pointer">
+    <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-black via-gray-900 to-blue-950 cursor-pointer [::-webkit-scrollbar-track:background:rgba(17,24,39,0.5)] [::-webkit-scrollbar-thumb:background:rgba(59,130,246,0.5)] [::-webkit-scrollbar-thumb:hover:background:rgba(59,130,246,0.7)] [::-webkit-scrollbar:width:8px] [::-webkit-scrollbar-thumb:rounded-lg] [::-webkit-scrollbar-track:rounded-lg]">
       {/* Abstract animated elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Background grid */}
@@ -364,14 +364,14 @@ export default function Portfolio() {
             transition={{ duration: 0.8 }}
             className="flex flex-col justify-center"
           >
-            <div className="mb-8 inline-flex items-center rounded-full bg-blue-500/10 px-4 py-1 text-sm text-blue-400 ring-1 ring-inset ring-blue-500/20 backdrop-blur-sm">
-              <span className="relative flex h-2 w-2 mr-2">
+            <div className="mb-8 inline-flex items-center rounded-full bg-blue-500/10 px-6 py-2 text-lg font-semibold text-blue-400 ring-1 ring-inset ring-blue-500/20 backdrop-blur-sm">
+              <span className="relative flex h-3 w-3 mr-4">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
               </span>
-              React & React Native Developer
+              <span className="text-xl font-bold">Jick T. Lampago</span>
             </div>
-
+{/* 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -409,12 +409,12 @@ export default function Portfolio() {
                   />
                 </motion.span>
               </h2>
-            </motion.div>
+            </motion.div> */}
 
             <h6 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-              <span className="block">Crafting Digital</span>
+              <span className="block">5+</span>
               <span className="block bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-300 bg-clip-text text-transparent">
-                Experiences
+                Years of experience
               </span>
               <span className="block text-2xl sm:text-3xl mt-2 text-gray-400">
                 Web & Mobile
@@ -499,9 +499,9 @@ export default function Portfolio() {
                   <Smartphone className="h-8 w-8 text-purple-400" />
                   <h3 className="mt-4 text-lg font-semibold text-white">React Native</h3>
                   <p className="mt-2 text-sm text-gray-400">iOS & Android Development</p>
-                  <div className="mt-3 flex gap-2">
-                    <span className="px-2 py-1 text-xs rounded-full bg-purple-500/20 text-purple-400">React Native</span>
-                    <span className="px-2 py-1 text-xs rounded-full bg-purple-500/20 text-purple-400">Expo</span>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <span className="px-3 py-1.5 text-xs rounded-full bg-purple-500/20 text-purple-400">React Native</span>
+                    <span className="px-3 py-1.5 text-xs rounded-full bg-purple-500/20 text-purple-400">Expo</span>
                   </div>
                 </div>
               </Card>
@@ -530,6 +530,24 @@ export default function Portfolio() {
                     <span className="px-2 py-1 text-xs rounded-full bg-orange-500/20 text-orange-400">Optimized</span>
                     <span className="px-2 py-1 text-xs rounded-full bg-orange-500/20 text-orange-400">Scalable</span>
                     <span className="px-2 py-1 text-xs rounded-full bg-orange-500/20 text-orange-400">SEO</span>
+                  </div>
+                </div>
+              </Card>
+              <Card className="group relative overflow-hidden bg-gradient-to-br from-rose-500/10 to-pink-500/10 p-4 backdrop-blur-sm border border-rose-500/20 col-span-2 h-40">
+                <div className="absolute inset-0 bg-gradient-to-r from-rose-500/0 via-rose-500/10 to-rose-500/0 opacity-0 transition-opacity group-hover:opacity-100" />
+                <div className="relative h-full flex items-center">
+                  <div className="flex-shrink-0">
+                    <Zap className="h-12 w-12 text-rose-400" />
+                  </div>
+                  <div className="ml-6">
+                    <h3 className="text-xl font-bold text-white">Progressive Web Apps</h3>
+                    <p className="mt-1 text-sm text-gray-300">Fast, reliable, and engaging web experiences that work offline</p>
+                    <div className="mt-2 flex gap-2 flex-wrap">
+                      <span className="px-2 py-1 text-xs rounded-full bg-rose-500/20 text-rose-300">PWA</span>
+                      <span className="px-2 py-1 text-xs rounded-full bg-rose-500/20 text-rose-300">Offline-First</span>
+                      <span className="px-2 py-1 text-xs rounded-full bg-rose-500/20 text-rose-300">Installable</span>
+                      <span className="px-2 py-1 text-xs rounded-full bg-rose-500/20 text-rose-300">Push Notifications</span>
+                    </div>
                   </div>
                 </div>
               </Card>
