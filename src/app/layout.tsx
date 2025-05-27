@@ -60,7 +60,7 @@ export default function RootLayout({
           content="Transform your online presence with stunning, high-performance websites and mobile apps. Professional web design, development, and digital solutions for businesses of all sizes."
         />
         <meta property="og:image" content="/preview/preview.png" />
-        <meta property="og:url" content="https://jicklampago.vercel.app/" />
+        <meta property="og:url" content="https://www.jicklampago.xyz/" />
         <meta property="og:type" content="website" />
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
