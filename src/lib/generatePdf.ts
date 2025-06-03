@@ -4,28 +4,29 @@ export const generatePdf = async () => {
   try {
     // Show loading state
     toast.loading('Opening print dialog...');
-    
+
     // Create a hidden iframe
     const iframe = document.createElement('iframe');
     iframe.style.display = 'none';
     document.body.appendChild(iframe);
-    
+
     // Set the iframe content with proper typing
-    const contentWindow = iframe.contentWindow as (Window & typeof globalThis & { document: Document }) | null;
+    const contentWindow = iframe.contentWindow as
+      | (Window & typeof globalThis & { document: Document })
+      | null;
     const doc = iframe.contentDocument || contentWindow?.document;
     if (!doc) {
       throw new Error('Failed to create print document');
     }
-    
+
     // Get the resume element
     const resumeElement = document.getElementById('resume');
     if (!resumeElement) {
       throw new Error('Resume content not found');
     }
-    
+
     // Clone the resume element to avoid modifying the original
-  
-    
+
     // Add print styles
     const style = document.createElement('style');
     style.textContent = `
@@ -63,7 +64,7 @@ export const generatePdf = async () => {
         .no-print { display: none; }
       }
     `;
-    
+
     // Create the document
     doc.open();
     doc.write(`
@@ -179,12 +180,12 @@ export const generatePdf = async () => {
               <div class="contact">
                 <div class="contact-item">📧 lampagojick5@gmail.com</div>
                 <div class="contact-item">📱 0920 650 2183</div>
-                <div class="contact-item">📍 Sito Crosaan, Talisay, Cebu, Philippines</div>
-                <a href="https://linkedin.com/in/yourprofile" class="contact-item">
-                  🌐 linkedin.com/in/yourprofile
+                <div class="contact-item">📍 Sitio Crossan, Talisay, Cebu, Philippines</div>
+                <a href="https://www.linkedin.com/in/jick-lampago" class="contact-item">
+                  🌐 https://www.linkedin.com/in/jick-lampago
                 </a>
-                <a href="https://jicklampago.vercel.app" class="contact-item">
-                  🌐 jicklampago.vercel.app
+                <a href="https://www.jicklampago.xyz" class="contact-item">
+                  🌐 https://www.jicklampago.xyz
                 </a>
               </div>
             </div>
@@ -200,7 +201,7 @@ export const generatePdf = async () => {
                 const months = now.getMonth() - startDate.getMonth();
                 const totalMonths = years * 12 + months;
                 const experienceYears = (totalMonths / 12).toFixed(1);
-                
+
                 return `Results-driven Frontend Developer with ${experienceYears} years of experience in building responsive and 
                 user-friendly web applications. Proficient in React, Next.js, and modern JavaScript 
                 frameworks. Passionate about creating efficient, accessible, and visually appealing 
@@ -229,8 +230,17 @@ export const generatePdf = async () => {
                 • Implement responsive designs and ensure cross-browser compatibility.
               </div>
               <div class="skills-container">
-                ${['React', 'TypeScript', 'Next.js', 'Redux', 'React Query', 'Material UI', 'Tailwind CSS']
-                  .map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                ${[
+                  'React',
+                  'TypeScript',
+                  'Next.js',
+                  'Redux',
+                  'React Query',
+                  'Material UI',
+                  'Tailwind CSS',
+                ]
+                  .map(skill => `<span class="skill-tag">${skill}</span>`)
+                  .join('')}
               </div>
             </div>
 
@@ -249,7 +259,8 @@ export const generatePdf = async () => {
               </div>
               <div class="skills-container">
                 ${['JavaScript', 'jQuery', 'SCSS', 'HTML5', 'Bootstrap', 'Moodle']
-                  .map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                  .map(skill => `<span class="skill-tag">${skill}</span>`)
+                  .join('')}
               </div>
             </div>
 
@@ -267,7 +278,8 @@ export const generatePdf = async () => {
               </div>
               <div class="skills-container">
                 ${['React.js', 'Next.js', 'Material UI', 'JavaScript', 'jQuery']
-                  .map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                  .map(skill => `<span class="skill-tag">${skill}</span>`)
+                  .join('')}
               </div>
             </div>
 
@@ -284,7 +296,8 @@ export const generatePdf = async () => {
               </div>
               <div class="skills-container">
                 ${['Vue.js', 'JavaScript', 'Python', 'REST APIs', 'jQuery', 'Bootstrap']
-                  .map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                  .map(skill => `<span class="skill-tag">${skill}</span>`)
+                  .join('')}
               </div>
             </div>
           </div>
@@ -297,27 +310,40 @@ export const generatePdf = async () => {
               <div style="width: 48%;">
                 <div style="font-size: 10px; font-weight: bold; margin: 4px 0; color: #1e293b;">Frontend Development</div>
                 <div class="skills-container">
-                  ${['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Redux', 'React Query', 'Shadcn/ui', 'Material UI']
-                    .map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                  ${[
+                    'React',
+                    'Next.js',
+                    'TypeScript',
+                    'Tailwind CSS',
+                    'Redux',
+                    'React Query',
+                    'Shadcn/ui',
+                    'Material UI',
+                  ]
+                    .map(skill => `<span class="skill-tag">${skill}</span>`)
+                    .join('')}
                 </div>
 
                 <div style="font-size: 10px; font-weight: bold; margin: 4px 0; color: #1e293b;">Mobile Development</div>
                 <div class="skills-container">
                   ${['React Native', 'Expo', 'iOS', 'Android', 'Mobile UI/UX', 'Native Modules']
-                    .map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                    .map(skill => `<span class="skill-tag">${skill}</span>`)
+                    .join('')}
                 </div>
               </div>
               <div style="width: 48%;">
                 <div style="font-size: 10px; font-weight: bold; margin: 4px 0; color: #1e293b;">Backend Development</div>
                 <div class="skills-container">
                   ${['Node.js', 'Express', 'REST APIs', 'MongoDB']
-                    .map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                    .map(skill => `<span class="skill-tag">${skill}</span>`)
+                    .join('')}
                 </div>
 
                 <div style="font-size: 10px; font-weight: bold; margin: 4px 0; color: #1e293b;">DevOps & AI Tools</div>
                 <div class="skills-container">
                   ${['Git', 'CI/CD', 'ChatGPT', 'GitHub Copilot', 'Windsurf']
-                    .map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                    .map(skill => `<span class="skill-tag">${skill}</span>`)
+                    .join('')}
                 </div>
               </div>
             </div>
@@ -367,22 +393,22 @@ export const generatePdf = async () => {
       </html>
     `);
     doc.close();
-    
+
     // Wait for content to load
     await new Promise(resolve => setTimeout(resolve, 500));
-    
+
     // Trigger print
     if (iframe.contentWindow) {
       iframe.contentWindow.focus();
       iframe.contentWindow.print();
     }
-    
+
     // Cleanup
     setTimeout(() => {
       document.body.removeChild(iframe);
       toast.dismiss();
     }, 1000);
-    
+
     return true;
   } catch (error) {
     console.error('Error generating PDF:', error);
