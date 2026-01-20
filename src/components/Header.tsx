@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Download, MessageCircle } from 'lucide-react';
+import { Send, MessageCircle } from 'lucide-react';
 
 interface HeaderProps {
   onRequestResume: () => void;
@@ -41,7 +41,7 @@ export function Header({ onRequestResume }: HeaderProps) {
               onClick={onRequestResume}
             >
               <span>Request Resume</span>
-              <Download className="ml-2 h-5 w-5 flex-shrink-0" />
+              <Send className="ml-2 h-5 w-5 flex-shrink-0" />
             </Button>
             <Button
               variant="outline"
