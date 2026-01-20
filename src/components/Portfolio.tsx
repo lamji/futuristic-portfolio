@@ -311,14 +311,20 @@ export default function Portfolio() {
     setEmailError('');
 
     try {
-      // Send email via API with server-side PDF generation
-      const response = await fetch('/api/send-resume', {
+      // Send email via new backend API with server-side PDF generation
+      const resumeUrl = process.env.NEXT_PUBLIC_RESUME_URL || 'http://localhost:5000';
+      console.log('Sending resume request to:', `${resumeUrl}/api/resume/send`);
+      
+      const response = await fetch(`${resumeUrl}/api/resume/send`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email }),
       });
+
+      console.log('Response status:', response.status);
+      console.log('Response headers:', response.headers);
 
       if (response.ok) {
         setShowEmailModal(false);
@@ -328,11 +334,20 @@ export default function Portfolio() {
         // Show success modal instead of alert
         setShowSuccessModal(true);
       } else {
-        const errorData = await response.json();
-        setEmailError(errorData.error || 'Failed to send resume');
+        const responseText = await response.text();
+        console.error('Error response:', responseText);
+        
+        let errorData;
+        try {
+          errorData = JSON.parse(responseText);
+        } catch {
+          errorData = { message: responseText };
+        }
+        
+        setEmailError(errorData.message || errorData.error || 'Failed to send resume');
       }
     } catch (error) {
-      console.error('Error sending resume: etst', error);
+      console.error('Error sending resume:', error);
       setEmailError('Network error. Please try again.');
     } finally {
       setIsSendingEmail(false);

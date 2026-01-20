@@ -372,12 +372,8 @@ async function generatePDFWithPuppeteer(): Promise<Buffer> {
         '--disable-accelerated-2d-canvas',
         '--no-first-run',
         '--no-zygote',
-        '--disable-gpu',
-        '--disable-extensions',
-        '--disable-background-timer-throttling',
-        '--disable-renderer-backgrounding',
-        '--disable-backgrounding-occluded-windows',
-        '--timeout=60000'
+        '--single-process',
+        '--disable-gpu'
       ]
     });
   } catch (browserError) {
@@ -438,7 +434,7 @@ async function generatePDFFallback(): Promise<Buffer> {
   doc.text('Location: Sitio Crossan, Talisay, Cebu, Philippines', 20, 50);
   
   doc.setFontSize(14);
-  doc.text('PROFESSIONAL SUMMARY', 20, 65);
+  doc.text('PROFESSIONAL SUMMARY3', 20, 65);
   
   doc.setFontSize(10);
   const summary = `Results-driven Frontend Developer with 4+ years of experience in building responsive and 
@@ -493,36 +489,27 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Add cache-busting timestamp
-    const timestamp = Date.now();
-    console.log(`Generating PDF at timestamp: ${timestamp}`);
-
     // Generate PDF using the exact same logic as generatePdf.ts
     let pdfBuffer: Buffer | null = null;
+    const pdfPath: string | null = null;
     
     try {
       // Try Puppeteer first (server-side equivalent of browser print)
       pdfBuffer = await generatePDFWithPuppeteer();
-      console.log('PDF generated successfully with Puppeteer');
     } catch (puppeteerError) {
       console.error('Puppeteer failed, using fallback:', puppeteerError);
       // Fallback to jsPDF if Puppeteer fails
       try {
         pdfBuffer = await generatePDFFallback();
-        console.log('PDF generated successfully with fallback');
       } catch (fallbackError) {
         console.error('Fallback PDF generation also failed:', fallbackError);
       }
     }
 
-    if (!pdfBuffer) {
-      throw new Error('Failed to generate PDF');
-    }
-
     // Send confirmation email with PDF attachment
     const emailHTML = generateResumeEmailHTML(email);
     const attachments = pdfBuffer ? [{
-      filename: `Jick_Lampago_Resume_${timestamp}.pdf`,
+      filename: 'Jick_Lampago_Resume.pdf',
       content: pdfBuffer,
       contentType: 'application/pdf',
     }] : undefined;
@@ -534,20 +521,44 @@ export async function POST(request: NextRequest) {
       attachments,
     });
 
+    // Also send notification to yourself
+    const notificationHTML = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #333;">New Resume Request</h2>
+        <p>Someone has requested your resume from your portfolio website.</p>
+        <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0;">
+          <strong>Email:</strong> ${email}<br>
+          <strong>Time:</strong> ${new Date().toLocaleString()}<br>
+          <strong>Source:</strong> Portfolio Website<br>
+          <strong>PDF Attached:</strong> Yes (Generated with original layout styling)
+        </div>
+        <p>You may want to follow up with this person regarding potential opportunities.</p>
+      </div>
+    `;
+
+    await sendEmail({
+      to: process.env.EMAIL_USER!,
+      subject: 'New Resume Request from Portfolio',
+      html: notificationHTML,
+    });
+
+    // Clean up PDF file after sending
+    if (pdfPath && existsSync(pdfPath)) {
+      setTimeout(async () => {
+        try {
+          await unlink(pdfPath!);
+        } catch (error) {
+          console.error('Error cleaning up PDF file:', error);
+        }
+      }, 5000); // Clean up after 5 seconds
+    }
+
     return NextResponse.json(
       { 
         success: true, 
-        message: 'Resume sent successfully! The professional PDF has been attached to your email.',
-        timestamp: timestamp
+        message: 'Resume sent successfully! The professional PDF has been attached to your email.'
       },
-      { 
-        status: 200,
-        headers: {
-          'Cache-Control': 'no-cache, no-store, must-revalidate',
-          'Pragma': 'no-cache',
-          'Expires': '0'
-        }
-      }
+      { status: 200 }
     );
   } catch (error) {
     console.error('Error in send-resume API:', error);
