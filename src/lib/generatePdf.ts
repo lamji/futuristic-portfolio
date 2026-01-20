@@ -214,7 +214,7 @@ export const generatePdf = async () => {
             </div>
 
             <div class="section">
-              <div class="section-title">PROFESSIONAL SUMMARY</div>
+              <div class="section-title">PROFESSIONAL SUMMARY1</div>
               <div class="summary">
                 ${(() => {
                   const startDate = new Date('2020-03-01');

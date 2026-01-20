@@ -173,7 +173,7 @@ async function generatePDFWithPuppeteer(): Promise<Buffer> {
           </div>
 
           <div class="section">
-            <div class="section-title">PROFESSIONAL SUMMARY</div>
+            <div class="section-title">PROFESSIONAL SUMMARY4</div>
             <div class="summary">
               ${(() => {
                 const startDate = new Date('2020-03-01');
@@ -434,7 +434,7 @@ async function generatePDFFallback(): Promise<Buffer> {
   doc.text('Location: Sitio Crossan, Talisay, Cebu, Philippines', 20, 50);
   
   doc.setFontSize(14);
-  doc.text('PROFESSIONAL SUMMARY', 20, 65);
+  doc.text('PROFESSIONAL SUMMARY3', 20, 65);
   
   doc.setFontSize(10);
   const summary = `Results-driven Frontend Developer with 4+ years of experience in building responsive and 

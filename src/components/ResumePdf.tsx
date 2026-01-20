@@ -168,7 +168,7 @@ const Resume = () => (
 
       {/* Professional Summary */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>PROFESSIONAL SUMMARY</Text>
+        <Text style={styles.sectionTitle}>PROFESSIONAL SUMMARY2</Text>
         <Text style={styles.summary}>
           Results-driven Frontend Developer with 3+ years of experience in building responsive and 
           user-friendly web applications. Proficient in React, Next.js, and modern JavaScript 
