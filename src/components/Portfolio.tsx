@@ -332,7 +332,7 @@ export default function Portfolio() {
         setEmailError(errorData.error || 'Failed to send resume');
       }
     } catch (error) {
-      console.error('Error sending resume:', error);
+      console.error('Error sending resume: etst', error);
       setEmailError('Network error. Please try again.');
     } finally {
       setIsSendingEmail(false);
