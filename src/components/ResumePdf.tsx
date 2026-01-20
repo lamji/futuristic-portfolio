@@ -154,7 +154,7 @@ const Resume = () => (
           <Text style={styles.title}>Mid Frontend Developer</Text>
           <View style={styles.contact}>
             <Text style={styles.contactItem}>📧 lampagojick5@gmail.com</Text>
-            <Text style={styles.contactItem}>📱 0920 650 2183</Text>
+            <Text style={styles.contactItem}>📱 09490390624</Text>
             <Text style={styles.contactItem}>📍 Sito Crosaan, Talisay, Cebu, Philippines</Text>
             <Link 
               src="https://linkedin.com/in/yourprofile" 
