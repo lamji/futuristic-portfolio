@@ -13,7 +13,7 @@ async function generatePDFWithPuppeteer(): Promise<Buffer> {
     await mkdir(tempDir, { recursive: true });
   }
 
-  // Generate the exact same HTML as in generatePdf.ts
+  // Generate professional resume HTML with 2-column layout
   const htmlContent = `
     <!DOCTYPE html>
     <html>
@@ -22,8 +22,12 @@ async function generatePDFWithPuppeteer(): Promise<Buffer> {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
+          @page {
+            margin: 0.5in;
+            size: letter;
+          }
           body {
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #1e293b;
             padding: 20px;
@@ -31,6 +35,8 @@ async function generatePDFWithPuppeteer(): Promise<Buffer> {
             margin: 0 auto;
             display: flex;
             gap: 20px;
+            font-size: 11px;
+            background: white;
           }
           .left-column {
             flex: 2;
@@ -46,6 +52,7 @@ async function generatePDFWithPuppeteer(): Promise<Buffer> {
             padding-bottom: 20px;
             border-bottom: 2px solid #3b82f6;
           }
+          .header-left { flex: 1; }
           .name {
             font-size: 24px;
             font-weight: bold;
@@ -126,7 +133,16 @@ async function generatePDFWithPuppeteer(): Promise<Buffer> {
           .reference-item {
             margin-bottom: 8px;
           }
+          a {
+            color: #3498db;
+            text-decoration: none;
+          }
+          a:hover {
+            text-decoration: underline;
+          }
           @media print {
+            body { margin: 0; padding: 15px; }
+            .section { page-break-inside: avoid; }
             a { text-decoration: none; color: inherit; }
             .no-print { display: none; }
             body {
@@ -341,7 +357,7 @@ async function generatePDFWithPuppeteer(): Promise<Buffer> {
   let browser;
   try {
     // Try to use Chrome that comes with Vercel's serverless environment
-    const executablePath = process.env.CHROME_EXECUTABLE_PATH || 
+    const executablePath = process.env.PUPPETEER_EXECUTABLE_PATH || 
       (process.platform === 'win32' ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' : 
        process.platform === 'darwin' ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' : 
        '/usr/bin/google-chrome');
